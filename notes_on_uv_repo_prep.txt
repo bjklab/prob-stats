@@ -1,0 +1,14 @@
+# local repo
+git clone https://github.com/bob-carpenter/prob-stats.git
+
+# address repo dependencies with uv
+uv init prob-stats
+cd prob-stats
+uv add cmdstanpy numpy pandas jupyter
+
+# enable dependencies for quarto build
+source .venv/bin/activate
+quarto preview quarto-book/
+quarto preview quarto-book/ --to pdf # note: quarto pdf generation requires tinytex - https://yihui.org/tinytex/#installation
+
+quarto render quarto-book/ --to pdf # note: quarto pdf generation requires tinytex - https://yihui.org/tinytex/#installation
